@@ -1,7 +1,7 @@
 import './MainPage.css';
 import data_ptbr from '../Others/text_ptbr_main.json';
 import data_en from '../Others/text_en_main.json';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import {UnrollBanner} from '../Components/UnrollBanner';
@@ -25,48 +25,58 @@ import robot3 from "../Images/Evolutionary Robotic Arm/Image3.png";
 
 function MainPage() {
 
-    const [data, setData] = useState(data_en);
+    const [language, setLanguage] = useState(data_en);
     const imagesBanner = [image1, image2, image3];
     const imagesParticle = [particle1, particle2, particle3];
     const imagesRobot = [robot1, robot2, robot3];
 
     const handleSwitch = (event) => {
 
-        event ? setData(data_ptbr) : setData(data_en);
+        event ? setLanguage(data_ptbr) : setLanguage(data_en);
+
+        localStorage.setItem("language", JSON.stringify(event));
     }
 
-    // const scrollToDiv = (data) => () => {
-    //
-    //     document.getElementById(data).scrollIntoView({block: 'center', behavior: 'smooth'});
-    // };
+    useEffect(() => {
+
+        const getLanguage = () => {
+
+            const aux = JSON.parse(localStorage.getItem('language'));
+
+            aux === true ? setLanguage(data_ptbr) : setLanguage(data_en);
+
+        }
+
+        getLanguage();
+    }, []);
 
     return (
         <>
             <div className="App">
                 <div className="fixed-content-right">
-                    <Summary list={data.summary.items} title={data.summary.title} />
+                    <Summary list={language.summary.items} title={language.summary.title} />
                 </div>
                 <div className="fixed-content-left">
                     <Link
                         to="https://github.com/BernaTameirao"
                         className="link-custom"
                         target="_blank"><UnrollBanner value={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
-                                  text={data.iconsText.github}/></Link>
+                                  text={language.iconsText.github}/></Link>
                     <Link
                         to="https://bernardo-t.itch.io/"
                         className="link-custom"
                         target="_blank"><UnrollBanner value={"https://static.itch.io/images/itchio-textless-black.svg"}
-                                  text={data.iconsText.itch}/></Link>
+                                  text={language.iconsText.itch}/></Link>
                     <Link
                         to=""
                         className="link-custom"
                         target="_blank"><UnrollBanner value={"https://cdn-icons-png.flaticon.com/512/87/87390.png"}
-                                            text={data.iconsText.instagram}/></Link>
+                                            text={language.iconsText.instagram}/></Link>
                     <Link
                         to="https://www.linkedin.com/in/btameirao/"
                         className="link-custom"
                         target="_blank"><UnrollBanner value={"https://cdn-icons-png.freepik.com/256/254/254394.png?semt=ais_hybrid"}
-                                  text={data.iconsText.linkedin}/></Link>
+                                  text={language.iconsText.linkedin}/></Link>
                 </div>
 
                 <div className="true-background">
@@ -82,7 +92,7 @@ function MainPage() {
                                 <img
                                     src="https://static-00.iconduck.com/assets.00/united-states-emoji-512x370-1qkq6uv6.png"
                                     alt="bandeira-eua"/>
-                                <SwitchButton sendData={handleSwitch}/>
+                                <SwitchButton sendData={handleSwitch} data={JSON.parse(localStorage.getItem('language'))}/>
                                 <img
                                     src="https://static-00.iconduck.com/assets.00/brazil-emoji-2048x1480-z2fhxkde.png"
                                     alt="bandeira-brasil"/>
@@ -93,11 +103,11 @@ function MainPage() {
 
 
                     <div className="second-background">
-                        <h1>{data.intro.title}</h1>
+                        <h1>{language.intro.title}</h1>
                         <div className="line"/>
                         <div className="row-div" id="topic0">
                             <div className="block-text">
-                                <p>{data.intro.pt1.split("<br/>").map((line, index) => (
+                                <p>{language.intro.pt1.split("<br/>").map((line, index) => (
                                     <>
                                         {line}
                                         <br/>
@@ -105,7 +115,7 @@ function MainPage() {
                                 ))}</p>
                             </div>
                             <div className="block-text">
-                                <p>{data.intro.pt2.split("<br/>").map((line, index) => (
+                                <p>{language.intro.pt2.split("<br/>").map((line, index) => (
                                     <>
                                         {line}
                                         <br/>
@@ -117,9 +127,9 @@ function MainPage() {
 
 
 
-                        <h2>{data.aboutMe.mainTitle}</h2>
+                        <h2>{language.aboutMe.mainTitle}</h2>
                         <div className="row-div" id="topic1">
-                            {data.aboutMe.chapters1.map((chapter, chapterIndex) => (
+                            {language.aboutMe.chapters1.map((chapter, chapterIndex) => (
                                 <>
                                 <div className="block-text" key={chapterIndex}>
                                     <h3>{chapter.title}</h3>
@@ -137,7 +147,7 @@ function MainPage() {
                             ))}
                         </div>
                         <div className="row-div" id="topic1">
-                            {data.aboutMe.chapters2.map((chapter, chapterIndex) => (
+                            {language.aboutMe.chapters2.map((chapter, chapterIndex) => (
 
                                 <>
                                     <div className="block-text" key={chapterIndex}>
@@ -162,17 +172,17 @@ function MainPage() {
                     <div className="third-background">
                         <div className="lateral-div"/>
                         <div className="central-div2">
-                            <Link to="/particles" className="link-custom"><h1>{data.particleLife.mainTitle}</h1></Link>
+                            <Link to="/particles" className="link-custom"><h1>{language.particleLife.mainTitle}</h1></Link>
                             <div className="row-div" id="topic2">
                                 <div className="block-text">
                                     <p>
-                                        {data.particleLife.text.split("<br/>").map((line, index) => (
+                                        {language.particleLife.text.split("<br/>").map((line, index) => (
                                         <>
                                             {line}
                                             <br/>
                                         </>
                                     ))}
-                                        <Link to="/particles" className="link-custom-2" >{data.particleLife.mainTitle}</Link>
+                                        <Link to="/particles" className="link-custom-2" >{language.particleLife.mainTitle}</Link>
                                     </p>
                                 </div>
                                 <ImagesSwitcher images={imagesParticle} background={"third"}/>
@@ -184,12 +194,12 @@ function MainPage() {
 
 
                     <div className="second-background">
-                        <h1>{data.evolutionaryRobot.mainTitle}</h1>
+                        <h1>{language.evolutionaryRobot.mainTitle}</h1>
                         <div className="row-div" id="topic3">
                             <ImagesSwitcher images={imagesRobot} background={"second"}/>
                             <div className="block-text">
                                 <p>
-                                    {data.evolutionaryRobot.text.split("<br/>").map((line, index) => (
+                                    {language.evolutionaryRobot.text.split("<br/>").map((line, index) => (
                                         <>
                                             {line}
                                             <br/>
@@ -199,6 +209,8 @@ function MainPage() {
                             </div>
                         </div>
                     </div>
+
+
                     <Footer/>
                 </div>
             </div>

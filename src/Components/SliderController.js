@@ -19,7 +19,7 @@ const SliderController = ({list, title, sendList}) => {
         sendList(childData.current);
     };
 
-    const handleSwitch = (event) => {
+    const handleSwitch = (key) => (event) => {
 
         setAdvancedSettings(event);
 
@@ -27,7 +27,7 @@ const SliderController = ({list, title, sendList}) => {
 
         childData.current = {
             ...childData.current,
-            ["isManual"]: event,
+            [key]: event,
         };
 
         sendList(childData.current);
@@ -38,7 +38,7 @@ const SliderController = ({list, title, sendList}) => {
             <h2>{title[0]}</h2>
             <div className="line-slider-controller"/>
             <p>{title[1]}</p>
-            <SwitchButton sendData={handleSwitch}/>
+            <SwitchButton sendData={handleSwitch("isManual")}/>
             <div className="line-slider-controller"/>
             {advancedSettings ? (
                 <div className="body-slider-controller-text-div">

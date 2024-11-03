@@ -1,5 +1,5 @@
 import './ParticleLife.css'
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import data_ptbr from '../Others/text_ptbr_particle.json';
 import data_en from '../Others/text_en_particle.json';
@@ -11,23 +11,24 @@ function ParticleLife() {
     const [points, setPoints] = useState([]);
     const canvasRef = useRef(null);
     const fields = useRef([[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]);
+    const [language, setLanguage] = useState(data_en);
     //const mouseCoords = useRef({x: -1, y: -1});
 
-    const parametersRules = useRef({gravitationDiffColor: [100, data_ptbr.sliderController.subTitles.gravitationDiffColor],
-                                                                gravitationSameColor: [100, data_ptbr.sliderController.subTitles.gravitationSameColor],
+    const parametersRules = useRef({gravitationDiffColor: [100, language.sliderController.subTitles.gravitationDiffColor],
+                                                                gravitationSameColor: [100, language.sliderController.subTitles.gravitationSameColor],
                                                                 isManual: false,
-                                                                manualDistanceSameColorAttr1: [200, data_ptbr.sliderController.subTitles.manualDistanceSameColorAttr1],
-                                                                manualDistanceSameColorAttr2: [100, data_ptbr.sliderController.subTitles.manualDistanceSameColorAttr2],
-                                                                manualValueSameColorAttr: [80, data_ptbr.sliderController.subTitles.manualValueSameColorAttr],
-                                                                manualDistanceSameColorRep1: [10, data_ptbr.sliderController.subTitles.manualDistanceSameColorRep1],
-                                                                manualDistanceSameColorRep2: [0, data_ptbr.sliderController.subTitles.manualDistanceSameColorRep2],
-                                                                manualValueSameColorRep: [8, data_ptbr.sliderController.subTitles.manualValueSameColorRep],
-                                                                manualDistanceDiffColorAttr1: [100, data_ptbr.sliderController.subTitles.manualDistanceDiffColorAttr1],
-                                                                manualDistanceDiffColorAttr2: [80, data_ptbr.sliderController.subTitles.manualDistanceDiffColorAttr2],
-                                                                manualValueDiffColorAttr: [80, data_ptbr.sliderController.subTitles.manualValueDiffColorAttr],
-                                                                manualDistanceDiffColorRep1: [60, data_ptbr.sliderController.subTitles.manualDistanceDiffColorAttr1],
-                                                                manualDistanceDiffColorRep2: [0, data_ptbr.sliderController.subTitles.manualDistanceDiffColorAttr2],
-                                                                manualValueDiffColorRep: [20, data_ptbr.sliderController.subTitles.manualValueDiffColorAttr]});
+                                                                manualDistanceSameColorAttr1: [200, language.sliderController.subTitles.manualDistanceSameColorAttr1],
+                                                                manualDistanceSameColorAttr2: [100, language.sliderController.subTitles.manualDistanceSameColorAttr2],
+                                                                manualValueSameColorAttr: [80, language.sliderController.subTitles.manualValueSameColorAttr],
+                                                                manualDistanceSameColorRep1: [10, language.sliderController.subTitles.manualDistanceSameColorRep1],
+                                                                manualDistanceSameColorRep2: [0, language.sliderController.subTitles.manualDistanceSameColorRep2],
+                                                                manualValueSameColorRep: [8, language.sliderController.subTitles.manualValueSameColorRep],
+                                                                manualDistanceDiffColorAttr1: [100, language.sliderController.subTitles.manualDistanceDiffColorAttr1],
+                                                                manualDistanceDiffColorAttr2: [80, language.sliderController.subTitles.manualDistanceDiffColorAttr2],
+                                                                manualValueDiffColorAttr: [80, language.sliderController.subTitles.manualValueDiffColorAttr],
+                                                                manualDistanceDiffColorRep1: [60, language.sliderController.subTitles.manualDistanceDiffColorAttr1],
+                                                                manualDistanceDiffColorRep2: [0, language.sliderController.subTitles.manualDistanceDiffColorAttr2],
+                                                                manualValueDiffColorRep: [20, language.sliderController.subTitles.manualValueDiffColorAttr]});
 
     const parametersParticles = useRef({populationSize: 1000});
 
@@ -88,7 +89,7 @@ function ParticleLife() {
     //     setPoints(updatedPoints);
     // }
 
-    const idleMovement = () => {
+    const idleMovement = useCallback(() => {
 
         if(canvasRef.current === null){
             return;
@@ -98,7 +99,7 @@ function ParticleLife() {
 
         const gravitationCalc = (distance) => {
 
-            return Math.min(1/((Math.pow(distance, 2)) + 1e8), 2);
+            return Math.min(1/(Math.pow(distance, 2) + 1e-8), 2);
         }
 
         const newPoints = fields.current.map((field, index) => {
@@ -130,26 +131,30 @@ function ParticleLife() {
 
                     for (let counter = 0; counter < fields.current[adjacentCounter].length; counter++) {
 
-                        const distance = Math.sqrt(Math.pow(fields.current[adjacentCounter][counter].x - point.x, 2) + Math.pow(fields.current[adjacentCounter][counter].y - point.y, 2))  + 0.001;
+                        const distance = Math.sqrt(Math.pow(fields.current[adjacentCounter][counter].x - point.x, 2)
+                                                                + Math.pow(fields.current[adjacentCounter][counter].y - point.y, 2) + 1e-8);
                         const gravitation = gravitationCalc(distance);
-                        const angle = Math.atan2(fields.current[adjacentCounter][counter].y - point.y, fields.current[adjacentCounter][counter].x - point.x);
+                        const angle = Math.atan2(fields.current[adjacentCounter][counter].y - point.y,
+                                                            fields.current[adjacentCounter][counter].x - point.x);
 
                         if (point.color !== fields.current[adjacentCounter][counter].color) {
 
                             if(parametersRules.current.isManual) {
 
-                                if (distance < parametersRules.current.manualDistanceDiffColorRep1[0] && distance > parametersRules.current.manualDistanceDiffColorRep2[0]) {
+                                if (distance < parametersRules.current.manualDistanceDiffColorRep1[0] && distance >
+                                    parametersRules.current.manualDistanceDiffColorRep2[0]) {
 
-                                    const newX = point.x - Math.cos(angle) / (parametersRules.current.manualValueDiffColorRep[0] + 1e8);
-                                    const newY = point.y - Math.sin(angle) / (parametersRules.current.manualValueDiffColorRep[0] + 1e8);
+                                    const newX = point.x - Math.cos(angle) / (parametersRules.current.manualValueDiffColorRep[0] + 1e-8);
+                                    const newY = point.y - Math.sin(angle) / (parametersRules.current.manualValueDiffColorRep[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
 
                                 }
-                                else if (distance < parametersRules.current.manualDistanceDiffColorAttr1[0] && distance > parametersRules.current.manualDistanceDiffColorAttr2[0]){
+                                else if (distance < parametersRules.current.manualDistanceDiffColorAttr1[0] && distance >
+                                    parametersRules.current.manualDistanceDiffColorAttr2[0]){
 
-                                    const newX = point.x + Math.cos(angle) / (parametersRules.current.manualValueDiffColorAttr[0] + 1e8);
-                                    const newY = point.y + Math.sin(angle) / (parametersRules.current.manualValueDiffColorAttr[0] + 1e8);
+                                    const newX = point.x + Math.cos(angle) / (parametersRules.current.manualValueDiffColorAttr[0] + 1e-8);
+                                    const newY = point.y + Math.sin(angle) / (parametersRules.current.manualValueDiffColorAttr[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
                                 }
@@ -165,18 +170,20 @@ function ParticleLife() {
 
                             if(parametersRules.current.isManual) {
 
-                                if (distance < parametersRules.current.manualDistanceSameColorAttr1[0] && distance > parametersRules.current.manualDistanceSameColorAttr2[0]) {
+                                if (distance < parametersRules.current.manualDistanceSameColorAttr1[0] && distance >
+                                    parametersRules.current.manualDistanceSameColorAttr2[0]) {
 
-                                    const newX = point.x + Math.cos(angle) / (parametersRules.current.manualValueSameColorAttr[0] + 1e8);
-                                    const newY = point.y + Math.sin(angle) / (parametersRules.current.manualValueSameColorAttr[0] + 1e8);
+                                    const newX = point.x + Math.cos(angle) / (parametersRules.current.manualValueSameColorAttr[0] + 1e-8);
+                                    const newY = point.y + Math.sin(angle) / (parametersRules.current.manualValueSameColorAttr[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
 
                                 }
-                                else if (distance < parametersRules.current.manualDistanceSameColorRep1[0] && distance > parametersRules.current.manualDistanceSameColorRep2[0]) {
+                                else if (distance < parametersRules.current.manualDistanceSameColorRep1[0] && distance >
+                                    parametersRules.current.manualDistanceSameColorRep2[0]) {
 
-                                    const newX = point.x - Math.cos(angle) / (parametersRules.current.manualValueSameColorRep[0] + 1e8);
-                                    const newY = point.y - Math.sin(angle) / (parametersRules.current.manualValueSameColorRep[0] + 1e8);
+                                    const newX = point.x - Math.cos(angle) / (parametersRules.current.manualValueSameColorRep[0] + 1e-8);
+                                    const newY = point.y - Math.sin(angle) / (parametersRules.current.manualValueSameColorRep[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
                                 }
@@ -224,15 +231,25 @@ function ParticleLife() {
 
         requestAnimationFrame(idleMovement);
 
-    }
+    }, []);
 
     useEffect(() => {
+
+        const getLanguage = () => {
+
+            const aux = JSON.parse(localStorage.getItem('language'));
+
+            aux === true ? setLanguage(data_ptbr) : setLanguage(data_en);
+        }
+
+        getLanguage();
 
         generateRandomPoints();
 
         idleMovement();
+        console.log("B");
 
-    }, []);
+    }, [idleMovement]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -271,7 +288,6 @@ function ParticleLife() {
 
     const handleListData = (data) => {
 
-        //console.log(data);
         parametersRules.current = data;
     }
 
@@ -279,7 +295,7 @@ function ParticleLife() {
     return (
         <div className="background-particles">
             <div className="fixed-content-particles">
-                <SliderController list={parametersRules.current} title={[data_ptbr.sliderController.title, data_ptbr.sliderController.advSettings]} sendList={handleListData} />
+                <SliderController list={parametersRules.current} title={[language.sliderController.title, language.sliderController.advSettings]} sendList={handleListData} />
             </div>
             <canvas ref={canvasRef} width={"1650"} height={"800"}/>
         </div>
