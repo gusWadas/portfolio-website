@@ -1,0 +1,33 @@
+.footer-body {
+
+    background-color: #232323;
+    width: 100%;
+    padding-bottom: 7vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-row {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-item {
+
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+
+    background-color: whitesmoke;
+}
+
+.footer-end {
+
+    background-color: #131313;
+    width: 100%;
+    height: 1vh;
+}

@@ -1,0 +1,23 @@
+{
+  "sliderController": {
+
+    "title": "Parâmetros",
+    "advSettings" : "Configurações",
+    "subTitles": {
+      "gravitationDiffColor": "Gravidade - Cor Difer",
+      "gravitationSameColor": "Gravidade - Cor Igual",
+      "manualDistanceSameColorAttr1": "Dist1 - Atr Cor Igual",
+      "manualDistanceSameColorAttr2": "Dist2 - Atr Cor Igual",
+      "manualValueSameColorAttr": "Força - Atr Cor Igual",
+      "manualDistanceSameColorRep1": "Dist1 - Rep Cor Igual",
+      "manualDistanceSameColorRep2": "Dist2 - Rep Cor Igual",
+      "manualValueSameColorRep": "Força - Rep Cor Igual",
+      "manualDistanceDiffColorAttr1": "Dist1 - Attr Cor Difer",
+      "manualDistanceDiffColorAttr2": "Dist2 - Attr Cor Difer",
+      "manualValueDiffColorAttr": "Força - Attr Cor Difer",
+      "manualDistanceDiffColorRep1": "Dist1 - Rep Cor Difer",
+      "manualDistanceDiffColorRep2": "Dist2 - Rep Cor Difer",
+      "manualValueDiffColorRep": "Força - Rep Cor Difer"
+    }
+  }
+}

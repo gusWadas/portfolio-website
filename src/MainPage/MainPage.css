@@ -1,0 +1,253 @@
+.App { /*Gambiarra*/
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.true-background {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.first-background {
+  background-color: #282c34;
+  height: fit-content;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+.fixed-content-left {
+
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+
+  height: 100vh;
+  width: 0.1vw;
+  font-size: calc(10px + 2vmin);
+
+  z-index: 1000; /* Ensure it is above other elements */
+
+  font-family: "Century Gothic";
+}
+
+.fixed-content-right{ /*Gambiarra*/
+
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+
+  align-self: end;
+
+  height: 100vh;
+  width: 0.1vw;
+
+  z-index: 1000; /* Ensure it is above other elements */
+
+  font-family: "Century Gothic";
+}
+
+.central-div {
+
+  align-self: start;
+  background-color: #2d3642;
+  height: 100%;
+  width: 80%;
+
+  border-left: 1px solid lightsteelblue;
+  border-right: 1px solid lightsteelblue;
+  /*border-bottom: 1px solid lightsteelblue;*/
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lateral-div {
+
+  align-self: start;
+  height: 100%;
+  width: 10%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+}
+
+.switch-div {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  height: fit-content;
+
+  border: 1px solid lightsteelblue;
+  padding: 1vmin;
+  margin: 1vmin;
+
+  border-radius: 10px;
+}
+
+.switch-div img {
+
+  width: 5vmin;
+  height: auto;
+  margin-left: 0.5vmin;
+  margin-right: 0.5vmin;
+
+  user-select: none;
+}
+
+.second-background {
+
+  background-color: whitesmoke;
+  width: 100%;
+  padding-bottom: 7vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.second-background h1 {
+
+  font-family: "Century Gothic";
+  font-size: calc(25px + 4vmin);
+
+  align-self: center;
+}
+
+.second-background h2 {
+
+  font-family: "Century Gothic";
+  font-size: calc(20px + 3vmin);
+
+  align-self: center;
+}
+
+.second-background h3 {
+
+  font-family: "Century Gothic";
+  font-size: calc(15px + 2vmin);
+
+  align-self: center;
+}
+
+.second-background h4 {
+
+  font-family: "Century Gothic";
+  font-size: calc(15px + 1vmin);
+
+  align-self: center;
+  margin-bottom: -1vmin;
+}
+
+.second-background hr {
+
+  margin: 1vmin;
+}
+
+.second-background p {
+
+  font-family: "Century Gothic";
+  font-size: calc(10px + 1vmin);
+}
+
+.second-background ul{
+
+  font-family: "Century Gothic";
+  font-size: calc(10px + 1vmin);
+
+  align-self: center;
+  margin-top: -1vh;
+}
+
+.row-div {
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+
+}
+
+.block-text {
+
+  width: 25vw;
+
+  margin-right: 3vw;
+  margin-left: 3vw;
+
+  text-wrap: pretty;
+  text-align: justify;
+}
+
+.line {
+
+  width: 70%;
+  height: 1px;
+  background-color: black;
+  opacity: 0.2;
+  margin: 5px;
+
+  align-self: center;
+}
+
+.third-background{
+
+  /*background-color: #2e2e2e;*/
+  background-color: #2d3642;
+  height: fit-content;
+  padding-bottom: 7vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+.third-background h1 {
+
+  font-family: "Century Gothic";
+  font-size: calc(25px + 4vmin);
+  color: whitesmoke;
+}
+
+.third-background p {
+
+  font-family: "Century Gothic";
+  font-size: calc(10px + 1vmin);
+  color: whitesmoke;
+}
+
+.central-div2 {
+
+  align-self: start;
+  height: 100%;
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-custom {
+
+  text-decoration: none;
+}
+
+.link-custom-2{
+
+  color:inherit;
+}

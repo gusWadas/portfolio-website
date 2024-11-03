@@ -1,0 +1,90 @@
+.big-banner{ /*Gambiarra*/
+
+    width: 2vw;
+    height: 35vh;
+
+    background-color: lightsteelblue;
+    font-family: "Century Gothic";
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    align-self: end;
+
+    transition: width 0.3s ease, color 0.3s ease;
+    color: transparent;
+
+}
+
+.big-banner:hover{
+
+    width: 20vmin;
+    color: black;
+}
+
+.inner-div-title-big-banner{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 0.4vw;
+    padding-right: 0.25vw;
+    height: 100%;
+    border-right: 2px solid #282c34;
+}
+
+.big-banner-title{
+
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+    font-weight: bold;
+    font-size: calc(5px + 2vmin);
+    color: black;
+
+    user-select: none;
+}
+
+.inner-div-text-big-banner{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    height: 100%;
+    width: 100%;
+    margin-left: 0.25vw;
+
+    font-size: calc(5px + 2vmin);
+
+}
+
+.big-banner-text {
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+
+    font-size: calc(5px + 2vmin);
+    user-select: none;
+    white-space: nowrap;        /* Prevents text from wrapping */
+    overflow: hidden;           /* Hides overflow */
+    text-overflow: clip;
+
+    cursor: pointer;
+}
+
+.line-big-banner {
+
+    width: 90%;
+    height: 1px;
+    background-color: black;
+    opacity: 0.2;
+    margin: 5px;
+
+    align-self: center;
+}
+
+

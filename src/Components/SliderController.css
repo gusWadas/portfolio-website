@@ -1,0 +1,64 @@
+.body-slider-controller{
+
+    height: 80%;
+    width: calc(0.5vw + 10px);
+    font-family: "Century Gothic";
+
+    align-self: end;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    color: transparent;
+
+    transition: width 0.3s ease, color 0.1s ease-in, background-color 0.3s ease;
+
+    border-left: 2px solid #282c34;
+    border-top: 2px solid #282c34;
+    border-bottom: 2px solid #282c34;
+
+    content-visibility: hidden;
+}
+
+.body-slider-controller:hover {
+
+    background-color: lightsteelblue;
+    color: black;
+    width: calc(5vw + 100px);
+    content-visibility: auto;
+}
+
+.body-each-slider-controller{
+
+
+}
+
+.body-slider-controller-text-div{
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 15vh;
+    padding-top: 15vh;
+
+    overflow-y: auto;
+
+}
+
+.line-slider-controller {
+
+    width: 80%;
+    height: 1px;
+    background-color: black;
+    opacity: 0.2;
+    margin: 5px;
+
+    align-self: center;
+}

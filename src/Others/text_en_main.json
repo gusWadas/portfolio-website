@@ -1,0 +1,102 @@
+{
+  "intro": {
+    "title": "Portfolio",
+    "pt1": "Hello, whoever is reading this! <br/><br/> You are on my website. <br/> Specifically on my portfolio website, where I store some of my projects. If you would like to see them all, the link to my social networks is right next door! <br/><br/> If you continued here, I believe you would like to know more about me (and about the most important projects I will present here).",
+    "pt2": "Firstly, my name is Bernardo Tameirão, and I am a Computer Science student at USP. <br/> <br/> I am a member of the game development group Fellowship of the Game and I am part of a scientific initiation on evolutionary systems. <br/><br/> And I've already done some projects as a hobby, including two other websites that I'll attach to this one as soon as they're ready. <br/>"
+  },
+
+  "iconsText": {
+    "github": "My Github",
+    "itch": "My Games",
+    "instagram": "My Drawings",
+    "linkedin": "My Linkedin"
+  },
+
+  "summary": {
+
+    "title": "Summary",
+    "items": [
+      {
+        "item1": "Introduction"
+      },
+      {
+        "item2": "About Me"
+      },
+      {
+        "item3": "Particle Life"
+      },
+      {
+        "item4": "Evolutionary Arm"
+      }
+    ]
+  },
+
+  "aboutMe": {
+
+    "mainTitle": "About Me",
+    "chapters1": [
+      {
+        "title": "Education",
+        "topics": [
+          {
+            "title": "USP",
+            "text": "I'm in the 4th year of my Computer Science degree at the University of São Paulo, the best ranked university in Latin America."
+          }
+        ]
+      },
+      {
+        "title": "Experience",
+        "topics": [
+          {
+            "title": "FoG",
+            "text": "I participate in the game development extension group Fellowship of the Game, since the beginning of my course, in which I learned about Unity, C#, and project coordination."
+          },
+          {
+            "title": "Semcomp",
+            "text": "I participated in the Semcomp organization in 2023 and 2024, as a member of the marketing team."
+          }
+        ]
+      }
+    ],
+  "chapters2": [
+      {
+        "title": "Languages",
+        "topics": [
+          {
+            "title": "Portuguese",
+            "text": "Native."
+          },
+          {
+            "title": "English",
+            "text": "Fluent."
+          }
+        ]
+      },
+      {
+        "title": "Awards",
+        "topics": [
+          {
+            "title": "Brazilian Robotics Olympiad: Theoretical Modality",
+            "text": "I was awarded the gold medal in 2019 and was invited to the robotics workshop, in which only the best from each brazilian state were called."
+          },
+          {
+            "title": "Brazilian Astronomy Olympiad",
+            "text": "I was awarded the gold medal in 2020 and 2019, and the bronze medal in 2018."
+          }
+        ]
+      }
+    ]
+  },
+
+  "particleLife": {
+
+    "mainTitle": "Particle Life",
+    "text": "One of the projects I did was Particle Life, as the possibility of slightly changing some rules placed, and completely changing a canvas, was very interesting.<br/><br/> So, with some simple rules, such as attraction and repulsion between particles it was possible to create some distinct screens, as can be seen alongside.<br/><br/>"
+  },
+
+  "evolutionaryRobot": {
+
+    "mainTitle": "Evolutionary Robotic Arm",
+    "text": "I do a scientific research initiation focused on the development of a robotic arm capable of obtaining the best path to a goal using evolutionary systems. A prototype has already been made by me, as shown below."
+  }
+}

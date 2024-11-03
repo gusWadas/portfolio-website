@@ -1,0 +1,68 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto; /* Center the carousel */
+    overflow: hidden;
+}
+  
+.imgCarousel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease, filter 0.2s ease; /* Add a transition for zoom effect */
+    user-select: none;
+    filter: brightness(0.7);
+}
+  
+.imgCarousel:hover {
+
+    filter: brightness(1.0);
+    transform: scale(1.05); /* Increase the scale factor for more zoom */
+}
+  
+.buttonCarouselLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+
+    height: 100%;
+    transition: opacity 0.3s ease;
+
+    font-size: 3vmin;
+}
+
+.buttonCarouselRight {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+
+    height: 100%;
+    transition: opacity 0.3s ease;
+
+    font-size: 3vmin;
+}
+  
+.buttonCarouselLeft:hover {
+
+    /*background-color: #2980b9;*/
+    opacity: 0.5;
+}
+
+.buttonCarouselRight:hover {
+
+    /*background-color: #2980b9;*/
+    opacity: 0.5;
+}

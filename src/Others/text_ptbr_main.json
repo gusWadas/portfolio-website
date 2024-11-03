@@ -1,0 +1,102 @@
+{
+  "intro": {
+    "title": "Portfólio",
+    "pt1": "Salve, quem quer que esteja lendo isso! <br/><br/> Você está no meu site. <br/> Especificamente no meu site de portfólio, em que eu guardo alguns dos meus projetos. Se você gostaria de ver todos eles, o link das minhas redes sociais está logo ao lado! <br/><br/> Se você continuou por aqui, acredito que gostaria de saber mais sobre mim (e sobre os projetos mais importantes que apresentarei por aqui).",
+    "pt2": "Primeiramente, meu nome é Bernardo Tameirão, e eu sou um estudante de Ciências da Computação da USP. <br/> <br/> Sou membro do grupo de desenvolvimento de jogos Fellowship of the Game e faço parte de uma iniciação científica sobre sistemas evolutivos. <br/><br/> E já fiz alguns projetos por hobby, inclusive outros dois sites que anexarei nesse assim que estiverem prontos. <br/>"
+  },
+
+  "iconsText": {
+    "github": "Meu Github",
+    "itch": "Meus Jogos",
+    "instagram": "Meus Desenhos",
+    "linkedin": "Meu Linkedin"
+  },
+
+  "summary": {
+
+    "title": "Sumário",
+    "items": [
+      {
+        "item1": "Introdução"
+      },
+      {
+        "item2": "Sobre Mim"
+      },
+      {
+        "item3": "Particle Life"
+      },
+      {
+        "item4": "Braço Evolutivo"
+      }
+    ]
+  },
+
+  "aboutMe": {
+
+    "mainTitle": "Sobre Mim",
+    "chapters1": [
+      {
+        "title": "Formação",
+        "topics": [
+          {
+            "title": "USP",
+            "text": "Eu estou no 4° ano da graduação de Ciências da Computação da Universidade de São Paulo, a universidade mais bem avaliada da América Latina."
+          }
+        ]
+      },
+      {
+        "title": "Experiência",
+        "topics": [
+          {
+            "title": "FoG",
+            "text": "Eu participo do grupo de extensão sobre desenvolvimento de jogos Fellowship of the Game, desde o início do meu curso, em que eu aprendi sobre Unity, C#, e coordenação de projetos."
+          },
+          {
+            "title": "Semcomp",
+            "text": "Eu participei da organização da Semcomp nos anos de 2023 e 2024, como membro da equipe de marketing."
+          }
+        ]
+      }
+    ],
+  "chapters2": [
+      {
+        "title": "Idiomas",
+        "topics": [
+          {
+            "title": "Português",
+            "text": "Nativo."
+          },
+          {
+            "title": "Inglês",
+            "text": "Fluente."
+          }
+        ]
+      },
+      {
+        "title": "Prêmios",
+        "topics": [
+          {
+            "title": "Olímpiada Brasileira de Robótica Teórica",
+            "text": "Fui premiado com a medalha de ouro em 2019 e fui convidado para o minicurso de robótica, em que somente os melhores de cada estado brasileiro foram chamados."
+          },
+          {
+            "title": "Olímpiada Brasileira de Astronomia",
+            "text": "Fui premiado com a medalha de ouro em 2020 e 2019, e com a medalha de bronze em 2018."
+          }
+        ]
+      }
+    ]
+  },
+
+  "particleLife": {
+
+    "mainTitle": "Particle Life",
+    "text": "Um dos projetos que eu fiz foi um Particle Life, já que se mostrou muito interessante a possibilidade de alterar levemente algumas regras colocadas, e mudar completamente um canvas.<br/><br/> Assim, com algumas regras simples, como atração e repulsão entre partículas foi possível criar algumas telas distintas, como pode ser visto ao lado.<br/><br/>"
+  },
+
+  "evolutionaryRobot": {
+
+    "mainTitle": "Braço Robótico Evolutivo",
+    "text": "Eu faço uma iniciação científica focada no desenvolvimento de um braço robótico capaz de obter o melhor caminho até um objetivo utilizando sistemas evolutivos. Um protótipo já foi feito por mim, como demonstrado ao lado."
+  }
+}

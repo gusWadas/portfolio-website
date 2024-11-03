@@ -1,0 +1,77 @@
+.banner {
+    width: calc(6vmin + 10px);
+    height: calc(6vmin + 10px);
+
+    background-color: lightsteelblue;
+    overflow: hidden;
+
+    border-top: 2px solid #282c34;
+    border-bottom: 2px solid #282c34;
+    transition: width 0.3s ease;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+    color: transparent;
+
+}
+
+.banner:hover {
+
+    width: calc(30vmin + 40px);
+    color: black;
+
+}
+
+.banner img {
+
+    align-self: center;
+    height: 80%;
+    user-select: none;
+}
+
+.bannerText{
+
+    align-self: center;
+    justify-content: start;
+    width: 100%;
+
+    margin-left: 1vmin;
+
+}
+
+.bannerText p{
+
+    white-space: nowrap;        /* Prevents text from wrapping */
+    overflow: hidden;           /* Hides overflow */
+    text-overflow: clip;
+    user-select: none;
+
+    transition: color 0.5s ease;
+}
+
+.bannerText:hover p{
+
+    color: black;
+}
+
+.bannerEdge {
+
+    width: 0;
+    height: 0;
+    border-top: calc(3vmin + 6px) solid transparent;
+    border-bottom: calc(3vmin + 6px) solid transparent;
+    border-left: calc(1.5vmin + 3px) solid lightsteelblue;
+}
+
+.divPosition {
+
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+
+    margin-top: 1.5vmin;
+    margin-bottom: 1.5vmin;
+}
