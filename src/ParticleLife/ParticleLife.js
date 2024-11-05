@@ -14,21 +14,23 @@ function ParticleLife() {
     const [language, setLanguage] = useState(data_en);
     //const mouseCoords = useRef({x: -1, y: -1});
 
-    const parametersRules = useRef({gravitationDiffColor: [100, language.sliderController.subTitles.gravitationDiffColor],
-                                                                gravitationSameColor: [100, language.sliderController.subTitles.gravitationSameColor],
+    const lss = language.sliderController.subTitles
+
+    const parametersRules = useRef({gravitationDiffColor: [100, lss.gravitationDiffColor],
+                                                                gravitationSameColor: [100, lss.gravitationSameColor],
                                                                 isManual: false,
-                                                                manualDistanceSameColorAttr1: [200, language.sliderController.subTitles.manualDistanceSameColorAttr1],
-                                                                manualDistanceSameColorAttr2: [100, language.sliderController.subTitles.manualDistanceSameColorAttr2],
-                                                                manualValueSameColorAttr: [80, language.sliderController.subTitles.manualValueSameColorAttr],
-                                                                manualDistanceSameColorRep1: [10, language.sliderController.subTitles.manualDistanceSameColorRep1],
-                                                                manualDistanceSameColorRep2: [0, language.sliderController.subTitles.manualDistanceSameColorRep2],
-                                                                manualValueSameColorRep: [8, language.sliderController.subTitles.manualValueSameColorRep],
-                                                                manualDistanceDiffColorAttr1: [100, language.sliderController.subTitles.manualDistanceDiffColorAttr1],
-                                                                manualDistanceDiffColorAttr2: [80, language.sliderController.subTitles.manualDistanceDiffColorAttr2],
-                                                                manualValueDiffColorAttr: [80, language.sliderController.subTitles.manualValueDiffColorAttr],
-                                                                manualDistanceDiffColorRep1: [60, language.sliderController.subTitles.manualDistanceDiffColorAttr1],
-                                                                manualDistanceDiffColorRep2: [0, language.sliderController.subTitles.manualDistanceDiffColorAttr2],
-                                                                manualValueDiffColorRep: [20, language.sliderController.subTitles.manualValueDiffColorAttr]});
+                                                                manualDistanceSameColorAttr1: [200, lss.manualDistanceSameColorAttr1],
+                                                                manualDistanceSameColorAttr2: [100, lss.manualDistanceSameColorAttr2],
+                                                                manualValueSameColorAttr: [80, lss.manualValueSameColorAttr],
+                                                                manualDistanceSameColorRep1: [10, lss.manualDistanceSameColorRep1],
+                                                                manualDistanceSameColorRep2: [0, lss.manualDistanceSameColorRep2],
+                                                                manualValueSameColorRep: [8, lss.manualValueSameColorRep],
+                                                                manualDistanceDiffColorAttr1: [100, lss.manualDistanceDiffColorAttr1],
+                                                                manualDistanceDiffColorAttr2: [80, lss.manualDistanceDiffColorAttr2],
+                                                                manualValueDiffColorAttr: [80, lss.manualValueDiffColorAttr],
+                                                                manualDistanceDiffColorRep1: [60, lss.manualDistanceDiffColorAttr1],
+                                                                manualDistanceDiffColorRep2: [0, lss.manualDistanceDiffColorAttr2],
+                                                                manualValueDiffColorRep: [20, lss.manualValueDiffColorAttr]});
 
     const parametersParticles = useRef({populationSize: 1000});
 
@@ -40,7 +42,7 @@ function ParticleLife() {
 
         const newPoints = [];
         const pointsInFields = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
-        const colors = ['#ff5252', '#58ff58', '#4781ff', '#ffffff'];
+        const colors = ['#ff55aa', '#aaff55', '#55aaff', '#ffffff'];
 
         for (let i = 0; i < parametersParticles.current.populationSize; i++) {
 
@@ -102,7 +104,8 @@ function ParticleLife() {
             return Math.min(1/(Math.pow(distance, 2) + 1e-8), 2);
         }
 
-        const newPoints = fields.current.map((field, index) => {
+        const ficu = fields.current
+        const newPoints = ficu.map((field, index) => {
 
             let leftBorder, rightBorder;
 
@@ -113,9 +116,9 @@ function ParticleLife() {
 
                 leftBorder = index-1;
             }
-            if (index===fields.current.length-1){
+            if (index===ficu.length-1){
 
-                rightBorder=fields.current.length-1;
+                rightBorder=ficu.length-1;
             } else {
 
                 rightBorder = index+1;
@@ -129,69 +132,71 @@ function ParticleLife() {
 
                 for(let adjacentCounter = leftBorder; adjacentCounter<=rightBorder; adjacentCounter++) {
 
-                    for (let counter = 0; counter < fields.current[adjacentCounter].length; counter++) {
-
-                        const distance = Math.sqrt(Math.pow(fields.current[adjacentCounter][counter].x - point.x, 2)
-                                                                + Math.pow(fields.current[adjacentCounter][counter].y - point.y, 2) + 1e-8);
+                    for (let counter = 0; counter < ficu[adjacentCounter].length; counter++) {
+                        const ficuadjcoco = ficu[adjacentCounter][counter]
+                        const dltx = ficuadjcoco.x - point.x
+                        const dlty = ficuadjcoco.y - point.y
+                        
+                        const distance = Math.sqrt(Math.pow(dltx, 2) + Math.pow(dlty, 2) + 1e-8);
                         const gravitation = gravitationCalc(distance);
-                        const angle = Math.atan2(fields.current[adjacentCounter][counter].y - point.y,
-                                                            fields.current[adjacentCounter][counter].x - point.x);
+                        const angle = Math.atan2(dlty,dltx);
 
-                        if (point.color !== fields.current[adjacentCounter][counter].color) {
+                        if (point.color !== ficuadjcoco.color) {
+                            const pacu = parametersRules.current
 
-                            if(parametersRules.current.isManual) {
+                            if(pacu.isManual) {
 
-                                if (distance < parametersRules.current.manualDistanceDiffColorRep1[0] && distance >
-                                    parametersRules.current.manualDistanceDiffColorRep2[0]) {
+                                if (distance < pacu.manualDistanceDiffColorRep1[0] && distance >
+                                    pacu.manualDistanceDiffColorRep2[0]) {
 
-                                    const newX = point.x - Math.cos(angle) / (parametersRules.current.manualValueDiffColorRep[0] + 1e-8);
-                                    const newY = point.y - Math.sin(angle) / (parametersRules.current.manualValueDiffColorRep[0] + 1e-8);
+                                    const newX = point.x - Math.cos(angle) / (pacu.manualValueDiffColorRep[0] + 1e-8);
+                                    const newY = point.y - Math.sin(angle) / (pacu.manualValueDiffColorRep[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
 
                                 }
-                                else if (distance < parametersRules.current.manualDistanceDiffColorAttr1[0] && distance >
-                                    parametersRules.current.manualDistanceDiffColorAttr2[0]){
+                                else if (distance < pacu.manualDistanceDiffColorAttr1[0] && distance >
+                                    pacu.manualDistanceDiffColorAttr2[0]){
 
-                                    const newX = point.x + Math.cos(angle) / (parametersRules.current.manualValueDiffColorAttr[0] + 1e-8);
-                                    const newY = point.y + Math.sin(angle) / (parametersRules.current.manualValueDiffColorAttr[0] + 1e-8);
+                                    const newX = point.x + Math.cos(angle) / (pacu.manualValueDiffColorAttr[0] + 1e-8);
+                                    const newY = point.y + Math.sin(angle) / (pacu.manualValueDiffColorAttr[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
                                 }
 
                             } else {
 
-                                const newX = point.x - Math.cos(angle) * (gravitation * parametersRules.current.gravitationDiffColor[0]);
-                                const newY = point.y - Math.sin(angle) * (gravitation * parametersRules.current.gravitationDiffColor[0]);
+                                const newX = point.x - Math.cos(angle) * (gravitation * pacu.gravitationDiffColor[0]);
+                                const newY = point.y - Math.sin(angle) * (gravitation * pacu.gravitationDiffColor[0]);
 
                                 point = {...point, x: newX, y: newY};
                             }
                         } else {
 
-                            if(parametersRules.current.isManual) {
+                            if(pacu.isManual) {
 
-                                if (distance < parametersRules.current.manualDistanceSameColorAttr1[0] && distance >
-                                    parametersRules.current.manualDistanceSameColorAttr2[0]) {
+                                if (distance < pacu.manualDistanceSameColorAttr1[0] && distance >
+                                    pacu.manualDistanceSameColorAttr2[0]) {
 
-                                    const newX = point.x + Math.cos(angle) / (parametersRules.current.manualValueSameColorAttr[0] + 1e-8);
-                                    const newY = point.y + Math.sin(angle) / (parametersRules.current.manualValueSameColorAttr[0] + 1e-8);
+                                    const newX = point.x + Math.cos(angle) / (pacu.manualValueSameColorAttr[0] + 1e-8);
+                                    const newY = point.y + Math.sin(angle) / (pacu.manualValueSameColorAttr[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
 
                                 }
-                                else if (distance < parametersRules.current.manualDistanceSameColorRep1[0] && distance >
-                                    parametersRules.current.manualDistanceSameColorRep2[0]) {
+                                else if (distance < pacu.manualDistanceSameColorRep1[0] && distance >
+                                    pacu.manualDistanceSameColorRep2[0]) {
 
-                                    const newX = point.x - Math.cos(angle) / (parametersRules.current.manualValueSameColorRep[0] + 1e-8);
-                                    const newY = point.y - Math.sin(angle) / (parametersRules.current.manualValueSameColorRep[0] + 1e-8);
+                                    const newX = point.x - Math.cos(angle) / (pacu.manualValueSameColorRep[0] + 1e-8);
+                                    const newY = point.y - Math.sin(angle) / (pacu.manualValueSameColorRep[0] + 1e-8);
 
                                     point = {...point, x: newX, y: newY};
                                 }
 
                             } else {
-
-                                const newX = point.x + Math.cos(angle) * (gravitation * parametersRules.current.gravitationSameColor[0]/100);
-                                const newY = point.y + Math.sin(angle) * (gravitation * parametersRules.current.gravitationSameColor[0]/100);
+                                const grav = gravitation * pacu.gravitationSameColor[0]/100
+                                const newX = point.x + Math.cos(angle) * (grav);
+                                const newY = point.y + Math.sin(angle) * (grav);
 
                                 point = {...point, x: newX, y: newY};
                             }
@@ -216,7 +221,7 @@ function ParticleLife() {
                     point.y = 0;
                 }
 
-                const aux = Math.floor((Math.abs(point.x) / canvasRef.current.width) * (fields.current.length - 1));
+                const aux = Math.floor((Math.abs(point.x) / canvasRef.current.width) * (ficu.length - 1));
 
                 pointsInFields[aux].push(point);
 
